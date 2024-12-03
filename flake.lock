@@ -1,0 +1,99 @@
+{
+  "nodes": {
+    "armooo-dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733187460,
+        "narHash": "sha256-9ilLuT9CEzzlo1tnOo7gssFB4xI+3iBYfxX2n3ZywO4=",
+        "owner": "armooo",
+        "repo": "dotfiles",
+        "rev": "762fadd1f352288fe84a48254067e9b9f3afcf82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "armooo",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733050161,
+        "narHash": "sha256-lYnT+EYE47f5yY3KS/Kd4pJ6CO9fhCqumkYYkQ3TK20=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "62d536255879be574ebfe9b87c4ac194febf47c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-24.11",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1733139194,
+        "narHash": "sha256-PVQW9ovo0CJbhuhCsrhFJGGdD1euwUornspKpBIgdok=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "c6c90887f84c02ce9ebf33b95ca79ef45007bf88",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1732981179,
+        "narHash": "sha256-F7thesZPvAMSwjRu0K8uFshTk3ZZSNAsXTIFvXBT+34=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "62c435d93bf046a5396f3016472e8f7c8e2aed65",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "armooo-dotfiles": "armooo-dotfiles",
+        "home-manager": "home-manager",
+        "nixos-hardware": "nixos-hardware",
+        "nixpkgs": "nixpkgs",
+        "virtualfish": "virtualfish"
+      }
+    },
+    "virtualfish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732735458,
+        "narHash": "sha256-eomd3CA0iASjqMlEMpzPHV7BawB4qa//lnj2mAFi+Ec=",
+        "owner": "justinmayer",
+        "repo": "virtualfish",
+        "rev": "341a88b73c4574e0b9d8773048fbb8147b3830b4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "justinmayer",
+        "repo": "virtualfish",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
