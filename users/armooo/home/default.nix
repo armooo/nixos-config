@@ -20,5 +20,6 @@
     python3
     signal-desktop
     htop
+    iotop
   ];
 }

@@ -19,4 +19,19 @@
   networking.networkmanager.enable = true;
 
   system.stateVersion = "24.11"; # Did you read the comment?
+
+  services.keyd = {
+    enable = true;
+    keyboards = {
+      default = {
+        ids = ["*"];
+        settings = {
+          main = {
+            rightmeta = "layer(rightmeta)";
+          };
+          "rightmeta:C" = {};
+        };
+      };
+    };
+  };
 }

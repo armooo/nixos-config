@@ -15,7 +15,6 @@
   };
 
   services.gnome-keyring.enable = true;
-  programs.fish.interactiveShellInit = "set -gx SSH_AUTH_SOCK /run/user/1000/keyring/ssh";
 
   home.pointerCursor = {
     name = "Adwaita";
