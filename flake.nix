@@ -59,7 +59,7 @@
           # Import the previous configuration.nix we used,
           # so the old configuration file still takes effect
           ./nodes/craptop
-          nixos-hardware.nixosModules.apple-macbook-pro-11-1
+          #nixos-hardware.nixosModules.apple-macbook-pro-11-1
           ./common
           ./configuration.nix
           ./desktop-env
