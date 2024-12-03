@@ -1,5 +1,5 @@
-{ pkgs, ...}:
-let 
+{ pkgs, ... }:
+let
   shares = [
     "movies"
     "music"
@@ -24,10 +24,10 @@ in
   }) shares;
 
   systemd.automounts = map (share: {
-      where = "/mnt/${share}";
-      wantedBy = [ "multi-user.target" ];
-      automountConfig = {
-        TimeoutIdleSec = "5m";
-      };
-    }) shares;
+    where = "/mnt/${share}";
+    wantedBy = [ "multi-user.target" ];
+    automountConfig = {
+      TimeoutIdleSec = "5m";
+    };
+  }) shares;
 }

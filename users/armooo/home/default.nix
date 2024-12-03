@@ -1,10 +1,10 @@
 { pkgs, armooo-dotfiles, ... }:
 {
   imports = [
-	./vim.nix
-        ./fish.nix
-        ./git.nix
-        ./sway.nix
+    ./vim.nix
+    ./fish.nix
+    ./git.nix
+    ./sway.nix
   ];
 
   home.username = "armooo";
@@ -18,5 +18,7 @@
 
   home.packages = with pkgs; [
     python3
+    signal-desktop
+    htop
   ];
 }

@@ -1,10 +1,22 @@
-{ pkgs, armooo-dotfiles,  ... }:
+{
+  config,
+  pkgs,
+  armooo-dotfiles,
+  ...
+}:
 {
   home.file.".config/sway" = {
-    source = "${armooo-dotfiles}/sway/.config/sway";
+    source = config.lib.file.mkOutOfStoreSymlink "${armooo-dotfiles}/sway/.config/sway";
     recursive = true;
   };
-  home.packages = [
-    pkgs.sway-audio-idle-inhibit
+  home.file.".config/i3status" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${armooo-dotfiles}/sway/.config/i3status";
+    recursive = true;
+  };
+  home.packages = with pkgs; [
+    sway-audio-idle-inhibit
+    i3status
+    j4-dmenu-desktop
+    foot
   ];
 }

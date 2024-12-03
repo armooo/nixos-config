@@ -4,9 +4,12 @@
   users.users.armooo = {
     isNormalUser = true;
     description = "Jason Michalski";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
     shell = pkgs.fish;
   };

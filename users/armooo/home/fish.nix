@@ -1,4 +1,9 @@
-{ pkgs, armooo-dotfiles, virtualfish, ... }:
+{
+  pkgs,
+  armooo-dotfiles,
+  virtualfish,
+  ...
+}:
 {
   programs.fish = {
     enable = true;

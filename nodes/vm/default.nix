@@ -1,16 +1,16 @@
-{config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.grub = {
-	enable = true;
-  	device = "/dev/vda";
-  	useOSProber = false;
+    enable = true;
+    device = "/dev/vda";
+    useOSProber = false;
   };
 
   networking.hostName = "nixos";
