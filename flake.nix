@@ -40,7 +40,6 @@
         modules = [
           ./nodes/vm
           ./common
-          ./configuration.nix
           ./desktop-env
           ./users/armooo
           home-manager.nixosModules.home-manager
@@ -56,7 +55,6 @@
         modules = [
           ./nodes/craptop
           ./common
-          ./configuration.nix
           ./desktop-env
           ./users/armooo
           home-manager.nixosModules.home-manager
@@ -72,7 +70,6 @@
         modules = [
           ./nodes/armframe
           ./common
-          ./configuration.nix
           ./desktop-env
           ./users/armooo
           home-manager.nixosModules.home-manager
