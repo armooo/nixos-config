@@ -62,5 +62,21 @@
           home-manager.nixosModules.home-manager
         ];
       };
+      nixosConfigurations.armframe = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+            armooo-dotfiles = armooo-dotfiles;
+            virtualfish = virtualfish;
+            nixos-hardware = nixos-hardware;
+        };
+        modules = [
+          ./nodes/armframe
+          ./common
+          ./configuration.nix
+          ./desktop-env
+          ./users/armooo
+          home-manager.nixosModules.home-manager
+        ];
+      };
     };
 }
