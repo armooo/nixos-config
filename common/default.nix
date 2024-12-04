@@ -31,4 +31,7 @@
       value = 1;
     }
   ];
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 }

@@ -1,8 +1,8 @@
-{ lib, nixos-hardware, ... }:
+{ nixos-hardware, ... }:
 {
   imports = [
     ./hardware-configuration.nix
-    #nixos-hardware.nixosModules.apple-macbook-pro-11-1
+    nixos-hardware.nixosModules.apple-macbook-pro-11-1
   ];
 
   nixpkgs.config.allowUnfree = true;

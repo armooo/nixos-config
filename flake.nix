@@ -30,50 +30,36 @@
       ...
     }@inputs:
     {
-      # Please replace my-nixos with your hostname
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+            armooo-dotfiles = armooo-dotfiles;
+            virtualfish = virtualfish;
+            nixos-hardware = nixos-hardware;
+        };
         modules = [
-          # Import the previous configuration.nix we used,
-          # so the old configuration file still takes effect
           ./nodes/vm
           ./common
           ./configuration.nix
           ./desktop-env
           ./users/armooo
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.armooo = import ./users/armooo/home;
-            home-manager.extraSpecialArgs = {
-              armooo-dotfiles = armooo-dotfiles;
-              virtualfish = virtualfish;
-            };
-          }
         ];
       };
       nixosConfigurations.craptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+            armooo-dotfiles = armooo-dotfiles;
+            virtualfish = virtualfish;
+            nixos-hardware = nixos-hardware;
+        };
         modules = [
-          # Import the previous configuration.nix we used,
-          # so the old configuration file still takes effect
           ./nodes/craptop
-          #nixos-hardware.nixosModules.apple-macbook-pro-11-1
           ./common
           ./configuration.nix
           ./desktop-env
           ./users/armooo
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.armooo = import ./users/armooo/home;
-            home-manager.extraSpecialArgs = {
-              armooo-dotfiles = armooo-dotfiles;
-              virtualfish = virtualfish;
-            };
-          }
         ];
       };
     };
