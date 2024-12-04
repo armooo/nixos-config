@@ -1,10 +1,11 @@
 { pkgs, armooo-dotfiles, ... }:
 {
   imports = [
-    ./vim.nix
     ./fish.nix
     ./git.nix
+    ./ssh.nix
     ./sway.nix
+    ./vim.nix
   ];
 
   home.username = "armooo";
