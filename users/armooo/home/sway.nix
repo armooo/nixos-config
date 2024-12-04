@@ -32,4 +32,24 @@
     j4-dmenu-desktop
     foot
   ];
+
+  services.swayidle = {
+    enable = true;
+    events = [
+        {
+          event = "before-sleep";
+          command = "swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
+        }
+    ];
+    timeouts = [
+      {
+        timeout = 300;
+        command = "swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
+      }
+      {
+        timeout = 600;
+        command = "systemctl hybrid-sleep";
+      }
+    ];
+  };
 }

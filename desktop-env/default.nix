@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
 
   imports = [
@@ -54,6 +54,7 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+  services.dbus.packages = [ pkgs.gcr ];
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
