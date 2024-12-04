@@ -22,5 +22,7 @@
     signal-desktop
     htop
     iotop
+    mplayer
+    vlc
   ];
 }
