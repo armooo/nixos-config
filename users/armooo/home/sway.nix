@@ -27,6 +27,7 @@
   };
 
   home.packages = with pkgs; [
+    swaylock
     sway-audio-idle-inhibit
     i3status
     j4-dmenu-desktop
@@ -36,19 +37,24 @@
   services.swayidle = {
     enable = true;
     events = [
-        {
-          event = "before-sleep";
-          command = "swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
-        }
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
+      }
     ];
     timeouts = [
       {
         timeout = 300;
-        command = "swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
+        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
       }
       {
         timeout = 600;
-        command = "systemctl hybrid-sleep";
+        command = "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
+        resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
+      }
+      {
+        timeout = 1800;
+        command = "[ \"$(${pkgs.coreutils}/bin/cat /sys/class/power_supply/BAT0/status)\" = \"Discharging\" ] && ${pkgs.systemd}/bin/systemctl hybrid-sleep";
       }
     ];
   };

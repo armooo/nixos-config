@@ -24,12 +24,12 @@
     enable = true;
     keyboards = {
       default = {
-        ids = ["*"];
+        ids = [ "*" ];
         settings = {
           main = {
             rightmeta = "layer(rightmeta)";
           };
-          "rightmeta:C" = {};
+          "rightmeta:C" = { };
         };
       };
     };

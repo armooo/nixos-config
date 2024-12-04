@@ -33,9 +33,9 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-            armooo-dotfiles = armooo-dotfiles;
-            virtualfish = virtualfish;
-            nixos-hardware = nixos-hardware;
+          armooo-dotfiles = armooo-dotfiles;
+          virtualfish = virtualfish;
+          nixos-hardware = nixos-hardware;
         };
         modules = [
           ./nodes/vm
@@ -48,9 +48,9 @@
       nixosConfigurations.craptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-            armooo-dotfiles = armooo-dotfiles;
-            virtualfish = virtualfish;
-            nixos-hardware = nixos-hardware;
+          armooo-dotfiles = armooo-dotfiles;
+          virtualfish = virtualfish;
+          nixos-hardware = nixos-hardware;
         };
         modules = [
           ./nodes/craptop
@@ -63,9 +63,9 @@
       nixosConfigurations.armframe = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-            armooo-dotfiles = armooo-dotfiles;
-            virtualfish = virtualfish;
-            nixos-hardware = nixos-hardware;
+          armooo-dotfiles = armooo-dotfiles;
+          virtualfish = virtualfish;
+          nixos-hardware = nixos-hardware;
         };
         modules = [
           ./nodes/armframe
