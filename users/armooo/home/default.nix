@@ -24,5 +24,6 @@
     iotop
     mplayer
     vlc
+    pavucontrol
   ];
 }
