@@ -1,16 +1,19 @@
 {
+  lib,
   config,
   pkgs,
   armooo-dotfiles,
   ...
 }:
 {
-  home.file.".config/sway" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${armooo-dotfiles}/sway/.config/sway";
-    recursive = true;
+  home.file.".config/sway/lot.jpg" = {
+    source = "${armooo-dotfiles}/sway/.config/sway/lot.jpg";
+  };
+  home.file.".config/sway/Sway_Wallpaper_Blue_1920x1080.png" = {
+    source = "${armooo-dotfiles}/sway/.config/sway/Sway_Wallpaper_Blue_1920x1080.png";
   };
   home.file.".config/i3status" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${armooo-dotfiles}/sway/.config/i3status";
+    source = "${armooo-dotfiles}/sway/.config/i3status";
     recursive = true;
   };
 
@@ -26,6 +29,14 @@
     };
   };
 
+  wayland.windowManager.sway = {
+    enable = true;
+    package = null;
+    systemd.enable = true;
+    config = null;
+    extraConfig = lib.fileContents "${armooo-dotfiles}/sway/.config/sway/config";
+  };
+
   home.packages = with pkgs; [
     swaylock
     sway-audio-idle-inhibit
@@ -36,9 +47,14 @@
 
   services.swayidle = {
     enable = true;
+    systemdTarget = "sway-session.target";
     events = [
       {
         event = "before-sleep";
+        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
+      }
+      {
+        event = "lock";
         command = "${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
       }
     ];

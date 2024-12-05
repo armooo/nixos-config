@@ -27,6 +27,11 @@
     ];
   };
 
+  services.logind = {
+    killUserProcesses = true;
+    powerKey = "lock";
+  };
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
