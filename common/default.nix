@@ -13,6 +13,9 @@
     git
   ];
 
+  # busted with flakes
+  programs.command-not-found.enable = false;
+
   services.tailscale.enable = true;
 
   nix.gc = {

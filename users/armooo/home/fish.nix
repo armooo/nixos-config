@@ -15,6 +15,12 @@
     ];
     interactiveShellInit = ''
       set -gx SSH_AUTH_SOCK /run/user/1000/keyring/ssh
+      # Key bindings
+      function my_key_bindings
+          fish_vi_key_bindings
+          bind -M insert -m default jj force-repaint
+      end
+      set -g fish_key_bindings my_key_bindings
     '';
   };
   home.file.".config/fish/completions" = {
