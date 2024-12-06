@@ -1,10 +1,11 @@
-{ nixos-hardware, ... }:
+{ pkgs, nixos-hardware, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.framework-13-7040-amd
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   services.fwupd.enable = true;
   services.power-profiles-daemon.enable = true;
 
