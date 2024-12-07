@@ -42,6 +42,7 @@
   services.printing.enable = true;
 
   hardware.bluetooth.enable = true;
+  services.udisks2.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
