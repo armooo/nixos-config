@@ -3,6 +3,7 @@
 
   imports = [
     ./mounts.nix
+    ./suspend.nix
   ];
 
   # Enable the X11 windowing system.
