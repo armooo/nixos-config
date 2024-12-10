@@ -16,7 +16,7 @@
       "video"
     ];
     packages = with pkgs; [
-      #  thunderbird
+      wakeonlan
     ];
     shell = pkgs.fish;
   };
