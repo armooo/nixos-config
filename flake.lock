@@ -3,11 +3,11 @@
     "armooo-dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1733889813,
-        "narHash": "sha256-J2Btt2MV96b4HL8Bv20Vl+EmlE3dZeB8Ovh5XqBcoBE=",
+        "lastModified": 1734119473,
+        "narHash": "sha256-asaCf9ewPjDbRfdUonLmvyjFTGYUF4Hml8NhQxaPnt0=",
         "owner": "armooo",
         "repo": "dotfiles",
-        "rev": "315a0aa1687b15627b2541f42105e12014e53434",
+        "rev": "76ef251f63ab40b9df4a655ecc96d05622336dc4",
         "type": "github"
       },
       "original": {
