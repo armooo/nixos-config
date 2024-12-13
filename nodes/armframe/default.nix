@@ -38,25 +38,21 @@
   };
 
   # work around hang
-  systemd.services.bt-hang-hack= {
+  systemd.services.bt-hang-hack = {
     enable = true;
-    description="Disable Bluetooth before going to sleep";
-    before=["sleep.target"];
-    wantedBy = ["sleep.target"];
-    unitConfig ={
-      StopWhenUnneeded="yes";
+    description = "Disable Bluetooth before going to sleep";
+    before = [ "sleep.target" ];
+    wantedBy = [ "sleep.target" ];
+    unitConfig = {
+      StopWhenUnneeded = "yes";
     };
     serviceConfig = {
-      Type="oneshot";
-      RemainAfterExit="yes";
-      ExecStart="${pkgs.util-linux}/bin/rfkill block bluetooth";
-      ExecStop="${pkgs.util-linux}/bin/rfkill unblock bluetooth";
+      Type = "oneshot";
+      RemainAfterExit = "yes";
+      ExecStart = "${pkgs.util-linux}/bin/rfkill block bluetooth";
+      ExecStop = "${pkgs.util-linux}/bin/rfkill unblock bluetooth";
     };
   };
-
-  #systemd.sleep.extraConfig = ''
-  #  HibernateMode=shutdown
-  #'';
 
   system.stateVersion = "24.11"; # Did you read the comment?
 }
