@@ -18,12 +18,12 @@
       {
         keys = [ 225 ];
         events = [ "key" ];
-        command = "/run/current-system/sw/bin/light -A 10";
+        command = "/run/current-system/sw/bin/light -A 5";
       }
       {
         keys = [ 224 ];
         events = [ "key" ];
-        command = "/run/current-system/sw/bin/light -U 10";
+        command = "/run/current-system/sw/bin/light -U 5";
       }
     ];
   };
@@ -74,9 +74,9 @@
       "steam-run"
     ];
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
-}
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+    };
+  }
