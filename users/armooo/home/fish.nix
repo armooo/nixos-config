@@ -14,6 +14,7 @@
       }
     ];
     interactiveShellInit = ''
+      set fish_greeting
       set -gx SSH_AUTH_SOCK /run/user/1000/keyring/ssh
       # Key bindings
       function my_key_bindings
