@@ -12,15 +12,16 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
   services.fwupd.enable = true;
+  services.upower.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "armframe";
-
   # Enable networking
+  networking.hostName = "armframe";
   networking.usePredictableInterfaceNames = false;
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
@@ -36,6 +37,8 @@
       };
     };
   };
+
+  hardware.bluetooth.powerOnBoot = false;
 
   # work around hang
   systemd.services.bt-hang-hack = {
