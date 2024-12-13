@@ -9,9 +9,13 @@
     "flakes"
   ];
   environment.systemPackages = with pkgs; [
-    vim
     git
   ];
+
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   # busted with flakes
   programs.command-not-found.enable = false;
