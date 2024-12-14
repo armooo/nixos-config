@@ -64,13 +64,13 @@
         command = "${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
       }
       {
-        timeout = 600;
+        timeout = 330;
         command = "${pkgs.sway}/bin/swaymsg \"output * dpms off\"";
         resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * dpms on\"";
       }
       {
-        timeout = 1800;
-        command = "[ \"$(${pkgs.coreutils}/bin/cat /sys/class/power_supply/BAT0/status)\" = \"Discharging\" ] && ${pkgs.systemd}/bin/systemctl hybrid-sleep";
+        timeout = 340;
+        command = "[ \"$(${pkgs.coreutils}/bin/cat /sys/class/power_supply/BAT*/status)\" = \"Discharging\" ] && ${pkgs.systemd}/bin/systemctl hybrid-sleep";
       }
     ];
   };
