@@ -6,9 +6,6 @@
   ...
 }:
 {
-  home.file.".config/sway/lot.jpg" = {
-    source = "${armooo-dotfiles}/sway/.config/sway/lot.jpg";
-  };
   home.file.".config/i3status" = {
     source = "${armooo-dotfiles}/sway/.config/i3status";
     recursive = true;
@@ -58,7 +55,7 @@
       keybindings = let
         modifier = config.wayland.windowManager.sway.config.modifier;
       in lib.mkOptionDefault {
-        "${modifier}+Ctrl+l" = "exec ${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
+        "${modifier}+Ctrl+l" = "exec ${pkgs.hyprlock}/bin/hyprlock";
         "${modifier}+n" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
         "${modifier}+p" = "[app_id=\"signal\"] scratchpad show";
         "${modifier}+Shift+s" = "sticky toggle";
@@ -70,11 +67,10 @@
   };
 
   home.packages = with pkgs; [
-    swaylock
-    sway-audio-idle-inhibit
+    foot
     i3status
     j4-dmenu-desktop
-    foot
+    sway-audio-idle-inhibit
     swaynotificationcenter
   ];
 
@@ -84,17 +80,17 @@
     events = [
       {
         event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
+        command = "${pkgs.hyprlock}/bin/hyprlock";
       }
       {
         event = "lock";
-        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
+        command = "${pkgs.hyprlock}/bin/hyprlock";
       }
     ];
     timeouts = [
       {
         timeout = 300;
-        command = "${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
+        command = "${pkgs.hyprlock}/bin/hyprlock";
       }
       {
         timeout = 330;
@@ -148,5 +144,66 @@
         };
       }
     ];
+  };
+
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = {
+        enable_fingerprint = true;
+      };
+      background = {
+        path = "${armooo-dotfiles}/sway/.config/sway/lot.jpg";
+        blur_passes = 2;
+        contrast = 1;
+        brightness = 0.5;
+        vibrancy = 0.2;
+        vibrancy_darkness = 0.2;
+      };
+      "input-field" = {
+        size = "350, 100";
+        outline_thickness = 2;
+        outer_color = "rgba(0, 0, 0, 0)";
+        inner_color = "rgba(0, 0, 0, 0.2)";
+        font_color = "rgba(170, 170, 170, 0)";
+        fade_on_empty = "false";
+        rounding = -1;
+        check_color = "rgb(204, 136, 34)";
+        placeholder_text = "<i><span foreground=\"##cdd6f4\">Input Password...</span></i>";
+        hide_input = "true";
+        position = "0, -200";
+        halign = "center";
+        valign = "center";
+      };
+      label =[
+        {
+          text = "$FPRINTMESSAGE";
+          color = "rgba(242, 243, 244, 0.75)";
+          font_size = 16;
+          font_family = "JetBrains Mono";
+          position = "0, -300";
+          halign = "center";
+          valign = "center";
+        }
+        {
+          text = "cmd[update:1000] ${pkgs.coreutils}/bin/date +'%A, %B %d'";
+          color = "rgba(242, 243, 244, 0.75)";
+          font_size = 22;
+          font_family = "JetBrains Mono";
+          position = "0, 300";
+          halign = "center";
+          valign = "center";
+        }
+        {
+          text = "cmd[update:1000] ${pkgs.coreutils}/bin/date +%-I:%M";
+          color = "rgba(242, 243, 244, 0.75)";
+          font_size = 95;
+          font_family = "JetBrains Mono";
+          position = "0, 200";
+          halign = "center";
+          valign = "center";
+        }
+      ];
+    };
   };
 }
