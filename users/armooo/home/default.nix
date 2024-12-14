@@ -25,5 +25,6 @@
     mplayer
     vlc
     pavucontrol
+    mpv
   ];
 }
