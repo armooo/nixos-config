@@ -4,6 +4,7 @@
   imports = [
     ./mounts.nix
     ./suspend.nix
+    ./plymouth.nix
   ];
 
   # Enable the X11 windowing system.
