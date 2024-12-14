@@ -15,6 +15,7 @@
 
   services.fwupd.enable = true;
   services.upower.enable = true;
+  services.hardware.bolt.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
