@@ -9,9 +9,6 @@
   home.file.".config/sway/lot.jpg" = {
     source = "${armooo-dotfiles}/sway/.config/sway/lot.jpg";
   };
-  home.file.".config/sway/Sway_Wallpaper_Blue_1920x1080.png" = {
-    source = "${armooo-dotfiles}/sway/.config/sway/Sway_Wallpaper_Blue_1920x1080.png";
-  };
   home.file.".config/i3status" = {
     source = "${armooo-dotfiles}/sway/.config/i3status";
     recursive = true;
@@ -65,6 +62,9 @@
         "${modifier}+n" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
         "${modifier}+p" = "[app_id=\"signal\"] scratchpad show";
         "${modifier}+Shift+s" = "sticky toggle";
+        XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+        XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
       };
     };
   };
