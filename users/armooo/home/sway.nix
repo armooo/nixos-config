@@ -33,8 +33,40 @@
     enable = true;
     package = null;
     systemd.enable = true;
-    config = null;
-    extraConfig = lib.fileContents "${armooo-dotfiles}/sway/.config/sway/config";
+    config = {
+      modifier = "Mod4";
+      input = {
+        "type:touchpad" ={
+          dwt = "enabled";
+          tap = "disabled";
+          natural_scroll = "disabled";
+          middle_emulation = "enabled";
+          scroll_factor = ".4";
+          click_method = "clickfinger";
+        };
+      };
+      window.commands = [
+        {
+          command = "move scratchpad, resize set 920 600";
+          criteria = {
+            app_id = "signal";
+          };
+        }
+      ];
+      startup = [
+        {
+          command = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
+        }
+      ];
+      keybindings = let
+        modifier = config.wayland.windowManager.sway.config.modifier;
+      in lib.mkOptionDefault {
+        "${modifier}+Ctrl+l" = "exec ${pkgs.swaylock}/bin/swaylock -f -c 000000 -i ~/.config/sway/lot.jpg";
+        "${modifier}+n" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
+        "${modifier}+p" = "[app_id=\"signal\"] scratchpad show";
+        "${modifier}+Shift+s" = "sticky toggle";
+      };
+    };
   };
 
   home.packages = with pkgs; [
@@ -43,6 +75,7 @@
     i3status
     j4-dmenu-desktop
     foot
+    swaynotificationcenter
   ];
 
   services.swayidle = {
@@ -74,4 +107,9 @@
       }
     ];
   };
+
+  services.swaync = {
+    enable = true;
+  };
+
 }
