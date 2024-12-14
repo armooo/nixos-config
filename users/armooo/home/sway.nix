@@ -112,4 +112,41 @@
     enable = true;
   };
 
+  services.kanshi = {
+    enable = true;
+    settings = [
+      {
+        profile = {
+          name = "undocked";
+          exec = [
+            "${pkgs.networkmanager}/bin/nmcli device connect wlan0"
+          ];
+          outputs = [
+            {
+              criteria = "eDP-1";
+            }
+          ];
+        };
+      }
+      {
+        profile = {
+          name = "desk";
+          exec = [
+            "${pkgs.networkmanager}/bin/nmcli device disconnect wlan0"
+          ];
+          outputs = [
+            {
+              criteria = "eDP-1";
+              position = "5372,1497";
+            }
+            {
+              criteria = "LG Electronics LG UltraFine 203NTCZHT347";
+              position = "3360,1061";
+              scale = 2.0;
+            }
+          ];
+        };
+      }
+    ];
+  };
 }
