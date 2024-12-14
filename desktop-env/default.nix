@@ -14,6 +14,7 @@
   programs.sway.enable = true;
   programs.hyprlock.enable = true; # for pam config
   programs.light.enable = true;
+  services.avahi.enable = true;
   services.actkbd = {
     enable = true;
     bindings = [
