@@ -20,6 +20,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.memtest86.enable = true;
 
   # Enable networking
   networking.hostName = "armframe";
@@ -39,7 +40,8 @@
     };
   };
 
-  hardware.bluetooth.powerOnBoot = false;
+  # seems to cause an oops in btusb_suspend+0x161/0x200 [btusb]
+  # hardware.bluetooth.powerOnBoot = false;
 
   # work around hang
   systemd.services.bt-hang-hack = {

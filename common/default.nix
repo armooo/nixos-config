@@ -27,8 +27,8 @@
     dates = "daily";
     options = "--delete-older-than 7d";
   };
-
   nix.settings.auto-optimise-store = true;
+  boot.loader.systemd-boot.configurationLimit = 20;
 
   security.pam.loginLimits = [
     {
