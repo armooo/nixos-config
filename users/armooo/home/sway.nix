@@ -160,7 +160,7 @@
     enable = true;
     settings = {
       general = {
-        enable_fingerprint = true;
+        # enable_fingerprint = true;
       };
       background = {
         path = "${armooo-dotfiles}/sway/.config/sway/lot.jpg";
