@@ -17,6 +17,8 @@
   programs.home-manager.enable = true;
   programs.firefox.enable = true;
 
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     python3
     signal-desktop

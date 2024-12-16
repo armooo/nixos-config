@@ -66,12 +66,22 @@
     };
   };
 
+  programs.foot = {
+    enable = true;
+    server.enable = true;
+    settings.main = {
+      font = "Inconsolata:size=10, Symbols Nerd Font:size=9";
+    };
+  };
+
   home.packages = with pkgs; [
-    foot
+    inconsolata
+    nerdfonts
     i3status
     j4-dmenu-desktop
     sway-audio-idle-inhibit
     swaynotificationcenter
+
   ];
 
   services.swayidle = {
