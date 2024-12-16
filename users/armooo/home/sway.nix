@@ -42,7 +42,7 @@
       bars = [
         {
           command = "${pkgs.waybar}/bin/waybar";
-          mode = "hide";
+          mode = "dock";
           position = "bottom";
         }
       ];
@@ -238,9 +238,8 @@
         exclusive = false;
         layer = "top";
         position = "bottom";
-        height = 24;
+        height = 20;
         spacing = 5;
-        mode = "hide";
         modules-left = [
           "sway/workspaces"
           "sway/mode"
@@ -326,6 +325,7 @@
       * {
         font-family: Inconsolata Nerd Font;
         font-size: 16px;
+        min-height: 0px;
         padding: 0;
         margin: 0;
         border-radius: 0px;
@@ -341,8 +341,8 @@
       }
 
       #workspaces button {
-        min-width: 24px;
-        min-height: 24px;
+        min-width: 16px;
+        min-height: 16px;
         background-color: #222222;
         color: #666666;
       }
