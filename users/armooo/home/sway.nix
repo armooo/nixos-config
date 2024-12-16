@@ -39,11 +39,24 @@
           click_method = "clickfinger";
         };
       };
+      bars = [
+        {
+          command = "${pkgs.waybar}/bin/waybar";
+          mode = "hide";
+          position = "bottom";
+        }
+      ];
       window.commands = [
         {
           command = "move scratchpad, resize set 920 600";
           criteria = {
             app_id = "signal";
+          };
+        }
+        {
+          command = "floating enable";
+          criteria = {
+            app_id = "org.pulseaudio.pavucontrol";
           };
         }
       ];
@@ -215,5 +228,133 @@
         }
       ];
     };
+  };
+
+  programs.waybar = {
+    enable = true;
+    settings = {
+      mainBar = {
+        ipc = true;
+        exclusive = false;
+        layer = "top";
+        position = "bottom";
+        height = 24;
+        spacing = 5;
+        mode = "hide";
+        modules-left = [
+          "sway/workspaces"
+          "sway/mode"
+        ];
+        modules-right = [
+          "network"
+          "custom/spacer"
+          "battery"
+          "custom/spacer"
+          "wireplumber"
+          "custom/spacer"
+          "power-profiles-daemon"
+          "custom/spacer"
+          "clock#1"
+          "custom/spacer"
+          "clock#2"
+          "tray"
+        ];
+
+        "custom/spacer" = {
+          format = "|";
+        };
+
+        network = {
+          format-wifi = "{icon} {essid} {signalStrength}%";
+          format-icons = [
+            "󰤯"
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
+          on-click = "$(pkgs.idwgui)";
+          tooltip-format = "{frequency}hz {signaldBm}dBm {ipaddr}";
+        };
+
+        battery = {
+          format = "{icon} {capacity}% {power:2.0f}W";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+          ];
+          tooltip-format = "{time}";
+        };
+
+        wireplumber = {
+          format = "{icon} {volume}%";
+          format-muted = "󰝟";
+          scroll-step = 5;
+          format-icons = [
+            "󰕿"
+            "󰖀"
+            "󰕾"
+          ];
+          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+        };
+
+        power-profiles-daemon = {
+          format-icons = {
+            default = "󰤇" ;
+            performance = "󰤇 ";
+            balanced = "󰗑 ";
+            power-saver = "󰳗 ";
+          };
+        };
+
+        "clock#1" = {
+          format = "{:%FT%I:%M}PT";
+          timezone = "America/Los_Angeles";
+          tooltip = false;
+        };
+
+        "clock#2" = {
+          format = "{:%FT%H:%M}Z";
+          timezone = "UTC";
+          tooltip = false;
+        };
+      };
+    };
+    style = ''
+      * {
+        font-family: Inconsolata Nerd Font;
+        font-size: 16px;
+        padding: 0;
+        margin: 0;
+        border-radius: 0px;
+      }
+
+      #waybar {
+        color: #eff0f1;
+        background-color: #000000;
+      }
+
+      #custom-spacer {
+        color: #666666;
+      }
+
+      #workspaces button {
+        min-width: 24px;
+        min-height: 24px;
+        background-color: #222222;
+        color: #666666;
+      }
+
+      #workspaces button.focused {
+        color: #ffffff;
+        background-color: #285577;
+      }
+
+      #workspaces button.urgent {
+        background-color: red;
+      }
+    '';
   };
 }
