@@ -55,6 +55,12 @@
           };
         }
         {
+          command = "move scratchpad, resize set 920 600";
+          criteria = {
+            class = "Signal";
+          };
+        }
+        {
           command = "floating enable";
           criteria = {
             app_id = "org.pulseaudio.pavucontrol|org.twosheds.iwgtk";
@@ -63,7 +69,7 @@
       ];
       startup = [
         {
-          command = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland";
+          command = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform --ozone-platform=x11";
         }
       ];
       keybindings = let
