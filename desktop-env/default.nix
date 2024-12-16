@@ -12,6 +12,7 @@
 
   services.xserver.displayManager.gdm.enable = true;
   programs.sway.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   security.pam.services.hyprlock = {
     fprintAuth = false;
   };
