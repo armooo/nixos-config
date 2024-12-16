@@ -20,13 +20,13 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    python3
-    signal-desktop
     htop
     iotop
     mplayer
-    vlc
-    pavucontrol
     mpv
+    pavucontrol
+    python3
+    signal-desktop
+    vlc
   ];
 }
