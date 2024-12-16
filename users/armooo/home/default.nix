@@ -16,6 +16,7 @@
 
   programs.home-manager.enable = true;
   programs.firefox.enable = true;
+  services.playerctld.enable = true;
 
   fonts.fontconfig.enable = true;
 

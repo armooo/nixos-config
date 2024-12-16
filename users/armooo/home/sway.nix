@@ -246,6 +246,9 @@
           "sway/workspaces"
           "sway/mode"
         ];
+        modules-center = [
+          "mpris"
+        ];
         modules-right = [
           "network"
           "custom/spacer"
@@ -260,6 +263,22 @@
           "clock#2"
           "tray"
         ];
+
+        mpris = {
+          format = "{status_icon} {dynamic}   ";
+          dynamic-order = [
+            "title"
+            "artist"
+            "album"
+          ];
+          title-len = "20";
+          dynamic-len = "50";
+          status-icons = {
+            playing = "󰐊 ";
+            paused = "󰏤 ";
+            stopped = "󰓛 ";
+          };
+        };
 
         "custom/spacer" = {
           format = "|";
