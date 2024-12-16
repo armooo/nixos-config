@@ -28,6 +28,7 @@
     package = null;
     systemd.enable = true;
     config = {
+      defaultWorkspace = "1";
       modifier = "Mod4";
       input = {
         "type:touchpad" ={
@@ -83,7 +84,7 @@
     enable = true;
     server.enable = true;
     settings.main = {
-      font = "Inconsolata:size=10, Symbols Nerd Font:size=9";
+      font = "Inconsolata:size=10, Symbols Nerd Font Mono:size=9";
     };
   };
 
@@ -267,11 +268,11 @@
         network = {
           format-wifi = "{icon} {essid} {signalStrength}%";
           format-icons = [
-            "󰤯"
-            "󰤟"
-            "󰤢"
-            "󰤥"
-            "󰤨"
+            "󰤯 "
+            "󰤟 "
+            "󰤢 "
+            "󰤥 "
+            "󰤨 "
           ];
           on-click = "${pkgs.iwgtk}/bin/iwgtk";
           tooltip-format = "{frequency}hz {signaldBm}dBm {ipaddr}";
@@ -280,11 +281,12 @@
         battery = {
           format = "{icon} {capacity}% {power:2.0f}W";
           format-icons = [
-            ""
-            ""
-            ""
-            ""
+            " "
+            " "
+            " "
+            " "
           ];
+          format-charging = "󱊦  {capacity}% {power:2.0f}W";
           tooltip-format = "{time}";
         };
 
@@ -293,9 +295,9 @@
           format-muted = "󰝟";
           scroll-step = 5;
           format-icons = [
-            "󰕿"
-            "󰖀"
-            "󰕾"
+            "󰕿 "
+            "󰖀 "
+            "󰕾 "
           ];
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
         };
