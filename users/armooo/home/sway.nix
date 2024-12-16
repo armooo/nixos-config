@@ -56,7 +56,7 @@
         {
           command = "floating enable";
           criteria = {
-            app_id = "org.pulseaudio.pavucontrol";
+            app_id = "org.pulseaudio.pavucontrol|org.twosheds.iwgtk";
           };
         }
       ];
@@ -88,13 +88,14 @@
   };
 
   home.packages = with pkgs; [
-    inconsolata
-    nerdfonts
     i3status
+    inconsolata
+    iwgtk
     j4-dmenu-desktop
+    nerdfonts
+    pavucontrol
     sway-audio-idle-inhibit
     swaynotificationcenter
-
   ];
 
   services.swayidle = {
@@ -272,7 +273,7 @@
             "󰤥"
             "󰤨"
           ];
-          on-click = "$(pkgs.idwgui)";
+          on-click = "${pkgs.iwgtk}/bin/iwgtk";
           tooltip-format = "{frequency}hz {signaldBm}dBm {ipaddr}";
         };
 
@@ -322,39 +323,39 @@
       };
     };
     style = ''
-      * {
+        * {
         font-family: Inconsolata Nerd Font;
         font-size: 16px;
         min-height: 0px;
         padding: 0;
         margin: 0;
         border-radius: 0px;
-      }
+        }
 
       #waybar {
         color: #eff0f1;
         background-color: #000000;
-      }
+        }
 
       #custom-spacer {
         color: #666666;
-      }
+        }
 
       #workspaces button {
         min-width: 16px;
         min-height: 16px;
         background-color: #222222;
         color: #666666;
-      }
+        }
 
       #workspaces button.focused {
         color: #ffffff;
         background-color: #285577;
-      }
+        }
 
       #workspaces button.urgent {
         background-color: red;
-      }
+        }
     '';
   };
 }
