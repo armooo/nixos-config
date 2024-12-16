@@ -12,7 +12,9 @@
 
   services.xserver.displayManager.gdm.enable = true;
   programs.sway.enable = true;
-  programs.hyprlock.enable = true; # for pam config
+  security.pam.services.hyprlock = {
+    fprintAuth = false;
+  };
   programs.light.enable = true;
   services.avahi.enable = true;
   services.actkbd = {
