@@ -23,11 +23,13 @@
   home.packages = with pkgs; [
     htop
     iotop
+    iw
     mplayer
     mpv
     pavucontrol
     python3
     signal-desktop
+    util-linux
     vlc
   ];
 }
