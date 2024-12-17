@@ -383,6 +383,11 @@
       #workspaces button.urgent {
         background-color: red;
         }
+
+      #mode {
+        background-color: red;
+      }
+
     '';
   };
 }
