@@ -111,17 +111,17 @@
     events = [
       {
         event = "before-sleep";
-        command = "${pkgs.hyprlock}/bin/hyprlock";
+        command = "${pkgs.hyprlock}/bin/hyprlock &";
       }
       {
         event = "lock";
-        command = "${pkgs.hyprlock}/bin/hyprlock";
+        command = "${pkgs.hyprlock}/bin/hyprlock &";
       }
     ];
     timeouts = [
       {
         timeout = 300;
-        command = "${pkgs.hyprlock}/bin/hyprlock";
+        command = "${pkgs.hyprlock}/bin/hyprlock &";
       }
       {
         timeout = 330;
