@@ -292,6 +292,9 @@
 
         network = {
           format-wifi = "{icon} {essid} {signalStrength}%";
+          tooltip-format = "{ipaddr}";
+          tooltip-format-wifi = "{frequency}hz {signaldBm}dBm {ipaddr}";
+          format-disconnected = "󰤮 ";
           format-icons = [
             "󰤯 "
             "󰤟 "
@@ -300,7 +303,6 @@
             "󰤨 "
           ];
           on-click = "${pkgs.iwgtk}/bin/iwgtk";
-          tooltip-format = "{frequency}hz {signaldBm}dBm {ipaddr}";
         };
 
         battery = {
