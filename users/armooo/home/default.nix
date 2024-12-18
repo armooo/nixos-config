@@ -21,6 +21,8 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    binutils
+    gdb
     htop
     iotop
     iw
