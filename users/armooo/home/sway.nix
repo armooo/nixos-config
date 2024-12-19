@@ -69,7 +69,7 @@
       ];
       startup = [
         {
-          command = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform --ozone-platform=x11";
+          command = "${pkgs.signal-desktop}/bin/signal-desktop --use-tray-icon";
         }
       ];
       keybindings = let
