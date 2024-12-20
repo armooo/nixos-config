@@ -32,14 +32,16 @@
   # Enable networking
   networking.hostName = "armframe";
   networking.usePredictableInterfaceNames = false;
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
+  networking.networkmanager = {
+    enable = true;
+    unmanaged = ["type:wifi"];
+  };
   networking.wireless.iwd = {
     enable = true;
     settings = {
       General = {
         CountryCountry = "US";
-        UseDefaultInterface = false;
+        EnableNetworkConfiguration = true;
       };
       Settings = {
         AutoConnect = true;
