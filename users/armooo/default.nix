@@ -12,10 +12,11 @@
     description = "Jason Michalski";
     extraGroups = [
       "networkmanager"
-      "wheel"
       "video"
+      "wheel"
     ];
     packages = with pkgs; [
+      mosh
       wakeonlan
     ];
     shell = pkgs.fish;
