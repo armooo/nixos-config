@@ -46,6 +46,10 @@
       Settings = {
         AutoConnect = true;
       };
+      Scan = {
+        InitialPeriodicScanInterval = 2;
+        MaximumPeriodicScanInterval = 120;
+      };
     };
   };
 
