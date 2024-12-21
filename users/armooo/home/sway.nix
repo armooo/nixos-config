@@ -71,6 +71,9 @@
         {
           command = "${pkgs.signal-desktop}/bin/signal-desktop --use-tray-icon";
         }
+        {
+          command = "${pkgs.albert}/bin/albert";
+        }
       ];
       keybindings = let
         modifier = config.wayland.windowManager.sway.config.modifier;
@@ -79,6 +82,7 @@
         "${modifier}+n" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
         "${modifier}+p" = "[app_id=\"signal\"] scratchpad show";
         "${modifier}+Shift+s" = "sticky toggle";
+        "${modifier}+d" = "exec echo -n toggle |  ${pkgs.netcat}/bin/nc -U /home/armooo/.cache/albert/ipc_socket";
         XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
         XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
@@ -95,6 +99,7 @@
   };
 
   home.packages = with pkgs; [
+    albert
     i3status
     inconsolata
     iwgtk
@@ -352,42 +357,42 @@
       };
     };
     style = ''
-        * {
-        font-family: Inconsolata Nerd Font;
-        font-size: 16px;
-        min-height: 0px;
-        padding: 0;
-        margin: 0;
-        border-radius: 0px;
-        }
+      * {
+      font-family: Inconsolata Nerd Font;
+      font-size: 16px;
+      min-height: 0px;
+      padding: 0;
+      margin: 0;
+      border-radius: 0px;
+      }
 
       #waybar {
-        color: #eff0f1;
-        background-color: #000000;
-        }
+      color: #eff0f1;
+      background-color: #000000;
+      }
 
       #custom-spacer {
-        color: #666666;
-        }
+      color: #666666;
+      }
 
       #workspaces button {
-        min-width: 16px;
-        min-height: 16px;
-        background-color: #222222;
-        color: #666666;
-        }
+      min-width: 16px;
+      min-height: 16px;
+      background-color: #222222;
+      color: #666666;
+      }
 
       #workspaces button.focused {
-        color: #ffffff;
-        background-color: #285577;
-        }
+      color: #ffffff;
+      background-color: #285577;
+      }
 
       #workspaces button.urgent {
-        background-color: red;
-        }
+      background-color: red;
+      }
 
       #mode {
-        background-color: red;
+      background-color: red;
       }
 
     '';
