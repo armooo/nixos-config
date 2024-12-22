@@ -22,6 +22,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.memtest86.enable = true;
 
+  virtualisation.podman.enable = true;
+
 
   # It seems there is a bug when amdgpu.abmlevel that kills the backlight now
   systemd.services.power-profiles-daemon.serviceConfig.ExecStart = [
