@@ -72,8 +72,9 @@
           ./common
           ./desktop-env
           ./users/armooo
+          ./systemd-resolved.nix
           home-manager.nixosModules.home-manager
         ];
       };
     };
-}
+  }
