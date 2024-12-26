@@ -18,6 +18,8 @@
     packages = with pkgs; [
       mosh
       wakeonlan
+      nvd
+      go
     ];
     shell = pkgs.fish;
   };
