@@ -78,6 +78,7 @@
       keybindings = let
         modifier = config.wayland.windowManager.sway.config.modifier;
       in lib.mkOptionDefault {
+        "${modifier}+Shift+A" = "focus child";
         "${modifier}+Ctrl+l" = "exec ${pkgs.hyprlock}/bin/hyprlock";
         "${modifier}+n" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
         "${modifier}+p" = "[app_id=\"signal\"] scratchpad show";
