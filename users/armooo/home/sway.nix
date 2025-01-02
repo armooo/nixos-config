@@ -259,7 +259,6 @@
           "sway/mode"
         ];
         modules-center = [
-          "mpris"
         ];
         modules-right = [
           "network"
@@ -275,22 +274,6 @@
           "clock#2"
           "tray"
         ];
-
-        mpris = {
-          format = "{status_icon} {dynamic}   ";
-          dynamic-order = [
-            "title"
-            "artist"
-            "album"
-          ];
-          title-len = "20";
-          dynamic-len = "50";
-          status-icons = {
-            playing = "󰐊 ";
-            paused = "󰏤 ";
-            stopped = "󰓛 ";
-          };
-        };
 
         "custom/spacer" = {
           format = "|";
@@ -325,7 +308,7 @@
 
         wireplumber = {
           format = "{icon} {volume}%";
-          format-muted = "󰝟";
+          format-muted = "󰝟 ";
           scroll-step = 5;
           format-icons = [
             "󰕿 "
