@@ -111,6 +111,22 @@
     swaynotificationcenter
   ];
 
+  systemd.user.services.sway-audio-idle-inhibit = {
+    Unit = {
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session-pre.target" ];
+      ConditionEnvironment = "WAYLAND_DISPLAY";
+    };
+
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.sway-audio-idle-inhibit}/bin/sway-audio-idle-inhibit";
+      Restart = "always";
+    };
+
+    Install.WantedBy = [ "graphical-session.target" ];
+  };
+
   services.swayidle = {
     enable = true;
     systemdTarget = "sway-session.target";
