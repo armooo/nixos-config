@@ -57,5 +57,10 @@
 
   hardware.bluetooth.powerOnBoot = false;
 
+  services.udev.extraRules = ''
+    # Suspend the system when battery level drops to 3% or lower
+    SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-3]", RUN+="${pkgs.systemd}/bin/systemctl hibernate"
+  '';
+
   system.stateVersion = "24.11"; # Did you read the comment?
 }
