@@ -24,10 +24,13 @@
 
   nix.gc = {
     automatic = true;
-    dates = "daily";
+    dates = "weekly";
     options = "--delete-older-than 7d";
   };
-  nix.settings.auto-optimise-store = true;
+  nix.optimise.automatic = true;
+  nix.extraOptions =  ''
+    keep-outputs = true
+  '';
   boot.loader.systemd-boot.configurationLimit = 20;
 
   security.pam.loginLimits = [
