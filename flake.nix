@@ -17,6 +17,10 @@
       url = "github:justinmayer/virtualfish";
       flake = false;
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -27,6 +31,7 @@
       home-manager,
       armooo-dotfiles,
       virtualfish,
+      lanzaboote,
       ...
     }@inputs:
     {
@@ -66,6 +71,7 @@
           armooo-dotfiles = armooo-dotfiles;
           virtualfish = virtualfish;
           nixos-hardware = nixos-hardware;
+          lanzaboote = lanzaboote;
         };
         modules = [
           ./nodes/armframe
@@ -73,6 +79,7 @@
           ./desktop-env
           ./users/armooo
           ./systemd-resolved.nix
+          ./secure_boot.nix
           home-manager.nixosModules.home-manager
         ];
       };
