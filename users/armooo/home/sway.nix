@@ -318,6 +318,9 @@
             " "
             " "
           ];
+          states = {
+            "critical" = 5;
+          };
           format-charging = "󱊦  {capacity}% {power:2.0f}W";
           tooltip-format = "{time}";
         };
@@ -392,6 +395,10 @@
       }
 
       #mode {
+      background-color: red;
+      }
+
+      #battery.critical {
       background-color: red;
       }
 
