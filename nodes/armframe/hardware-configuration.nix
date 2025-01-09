@@ -8,7 +8,7 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -17,6 +17,8 @@
     { device = "/dev/disk/by-uuid/5afcc8f3-3f41-4642-945c-3d7c0695988b";
       fsType = "ext4";
     };
+
+  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/a6ec177a-17d2-45b5-8011-2f610d5ee3fd";
 
   fileSystems."/mnt/movies" =
     { device = "systemd-1";

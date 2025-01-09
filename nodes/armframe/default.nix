@@ -36,7 +36,10 @@
     allowDiscards    = true;
     bypassWorkqueues = true;
   };
-  #boot.resumeDevice = "/dev/disk/by-uuid/98571501-b4e3-4964-8894-4a55f8628362";
+  boot.initrd.luks.devices.root = {
+    allowDiscards    = true;
+    bypassWorkqueues = true;
+  };
 
   virtualisation.podman.enable = true;
 
