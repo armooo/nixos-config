@@ -18,7 +18,7 @@
       flake = false;
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
+      url = "github:nix-community/lanzaboote/93e6f0d77548be8757c11ebda5c4235ef4f3bc67";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
