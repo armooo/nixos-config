@@ -9,6 +9,7 @@
   imports = [
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.framework-13-7040-amd
+    ./disk_encryption.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -22,24 +23,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.memtest86.enable = true;
 
-  environment.systemPackages = [
-    pkgs.cryptsetup
-  ];
-
   fileSystems."/".options = ["discard" "data=writeback" "journal_async_commit" "auto_da_alloc"];
   fileSystems."/home".options = ["discard" "data=writeback" "journal_async_commit" "auto_da_alloc"];
 
-  # encrypted swap
-  boot.initrd.systemd.enable = true; # for tpm2 unlock
-  boot.initrd.luks.devices.swap = {
-    device = "/dev/disk/by-uuid/a8f2ce7e-fc22-46dd-879b-6a4b0833af1f";
-    allowDiscards    = true;
-    bypassWorkqueues = true;
-  };
-  boot.initrd.luks.devices.root = {
-    allowDiscards    = true;
-    bypassWorkqueues = true;
-  };
 
   virtualisation.podman.enable = true;
 
