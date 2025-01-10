@@ -31,10 +31,10 @@
 
 
   # It seems there is a bug when amdgpu.abmlevel that kills the backlight now
-  #systemd.services.power-profiles-daemon.serviceConfig.ExecStart = [
-  #  ""
-  #  "${pkgs.power-profiles-daemon}/libexec/power-profiles-daemon --block-action=amdgpu_panel_power"
-  #];
+  systemd.services.power-profiles-daemon.serviceConfig.ExecStart = [
+    ""
+    "${pkgs.power-profiles-daemon}/libexec/power-profiles-daemon --block-action=amdgpu_panel_power"
+  ];
 
   # Enable networking
   networking.hostName = "armframe";
