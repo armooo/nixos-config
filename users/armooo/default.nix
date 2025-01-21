@@ -20,6 +20,7 @@
       wakeonlan
       nvd
       go
+      google-cloud-sdk
     ];
     shell = pkgs.fish;
   };
