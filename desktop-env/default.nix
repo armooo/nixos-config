@@ -10,6 +10,23 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+  systemd.user.extraConfig = ''
+      DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+  '';
+
+
+  # Fix links in FHS envs
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
+
   services.xserver.displayManager.gdm.enable = true;
   programs.sway.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
