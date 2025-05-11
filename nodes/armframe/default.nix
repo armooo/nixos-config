@@ -23,8 +23,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.memtest86.enable = true;
 
-  fileSystems."/".options = ["discard" "data=writeback" "journal_async_commit" "auto_da_alloc"];
-  fileSystems."/home".options = ["discard" "data=writeback" "journal_async_commit" "auto_da_alloc"];
+  fileSystems."/".options = ["discard" "auto_da_alloc"];
+  fileSystems."/home".options = ["discard" "auto_da_alloc"];
 
 
   virtualisation.podman.enable = true;
