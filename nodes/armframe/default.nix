@@ -7,12 +7,18 @@
 }:
 {
   imports = [
-    ./hardware-configuration.nix
-    nixos-hardware.nixosModules.framework-13-7040-amd
-    ./disk_encryption.nix
+	./hardware-configuration.nix
+	nixos-hardware.nixosModules.framework-13-7040-amd
+	./disk_encryption.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPatches = [
+	{
+	  name = "fix hibernate";
+	  patch = ./amdgpu_dm.patch;
+	}
+  ];
 
   services.fwupd.enable = true;
   services.upower.enable = true;
@@ -32,39 +38,39 @@
 
   # It seems there is a bug when amdgpu.abmlevel that kills the backlight now
   systemd.services.power-profiles-daemon.serviceConfig.ExecStart = [
-    ""
-    "${pkgs.power-profiles-daemon}/libexec/power-profiles-daemon --block-action=amdgpu_panel_power"
+	""
+	"${pkgs.power-profiles-daemon}/libexec/power-profiles-daemon --block-action=amdgpu_panel_power"
   ];
 
   # Enable networking
   networking.hostName = "armframe";
   networking.usePredictableInterfaceNames = false;
   networking.networkmanager = {
-    enable = true;
-    unmanaged = ["type:wifi"];
+	enable = true;
+	unmanaged = ["type:wifi"];
   };
   networking.wireless.iwd = {
-    enable = true;
-    settings = {
-      General = {
-        CountryCountry = "US";
-        EnableNetworkConfiguration = true;
-      };
-      Settings = {
-        AutoConnect = true;
-      };
-      Scan = {
-        InitialPeriodicScanInterval = 2;
-        MaximumPeriodicScanInterval = 120;
-      };
-    };
+	enable = true;
+	settings = {
+	  General = {
+		CountryCountry = "US";
+		EnableNetworkConfiguration = true;
+	  };
+	  Settings = {
+		AutoConnect = true;
+	  };
+	  Scan = {
+		InitialPeriodicScanInterval = 2;
+		MaximumPeriodicScanInterval = 120;
+	  };
+	};
   };
 
   hardware.bluetooth.powerOnBoot = false;
 
   services.udev.extraRules = ''
-    # Suspend the system when battery level drops to 3% or lower
-    SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-3]", RUN+="${pkgs.systemd}/bin/systemctl hibernate"
+	# Suspend the system when battery level drops to 3% or lower
+	SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-3]", RUN+="${pkgs.systemd}/bin/systemctl hibernate"
   '';
 
   system.stateVersion = "24.11"; # Did you read the comment?
