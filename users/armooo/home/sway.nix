@@ -105,7 +105,8 @@
     inconsolata
     iwgtk
     j4-dmenu-desktop
-    nerdfonts
+    nerd-fonts.symbols-only
+    nerd-fonts.inconsolata
     pavucontrol
     sway-audio-idle-inhibit
     swaynotificationcenter

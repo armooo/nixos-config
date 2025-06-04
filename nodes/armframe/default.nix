@@ -13,12 +13,6 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPatches = [
-    {
-      name = "fix hibernate";
-      patch = ./amdgpu_dm.patch;
-    }
-  ];
 
   services.fwupd.enable = true;
   services.upower.enable = true;
