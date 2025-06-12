@@ -21,19 +21,20 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    file
-    unzip
-    lutris
     binutils
+    file
     gdb
     htop
     iotop
     iw
+    lutris
     mplayer
     mpv
     pavucontrol
     python3
     signal-desktop
+    sxiv
+    unzip
     util-linux
     vlc
   ];
