@@ -203,6 +203,9 @@
   programs.hyprlock = {
     enable = true;
     settings = {
+      auth = {
+        "fingerprint:enabled" = true;
+      };
       general = {
         enable_fingerprint = true;
       };
@@ -231,7 +234,7 @@
       };
       label =[
         {
-          text = "$FPRINTMESSAGE";
+          text = "$FPRINTPROMPT";
           color = "rgba(242, 243, 244, 0.75)";
           font_size = 16;
           font_family = "JetBrains Mono";
