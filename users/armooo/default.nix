@@ -14,6 +14,7 @@
       "networkmanager"
       "video"
       "wheel"
+      "dialout"
     ];
     packages = with pkgs; [
       mosh
