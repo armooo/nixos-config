@@ -70,5 +70,19 @@
     SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-3]", RUN+="${pkgs.systemd}/bin/systemctl hibernate"
   '';
 
+  services.ollama = {
+	enable = true;
+	# Optional: preload models, see https://ollama.com/library
+    loadModels = [
+      "llama3.2:3b"
+      "deepseek-r1:1.5b"
+      "deepseek-r1:8b"
+      "gemma3:4b"
+      "gemma3n:24b"
+    ];
+	acceleration = "rocm";
+  };
+
+
   system.stateVersion = "24.11"; # Did you read the comment?
 }
