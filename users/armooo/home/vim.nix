@@ -12,6 +12,7 @@
       vim-jinja
       rust-vim
       vim-autoformat
+      vim-flake8
       (pkgs.vimUtils.buildVimPlugin {
         name = "desert";
         src = pkgs.fetchFromGitHub {
@@ -29,9 +30,13 @@
     '';
   };
 
-  home.packages = [
-    pkgs.nixfmt-rfc-style
-    pkgs.black
+  home.packages = with pkgs; [
+    nixfmt-rfc-style
+    black
+    clang-tools
+    fixjson
+    python313Packages.flake8
+    python313Packages.pep8
   ];
 
 }
