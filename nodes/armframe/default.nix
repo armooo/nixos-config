@@ -1,4 +1,5 @@
 {
+  nixpkgs,
   lib,
   pkgs,
   pkgs-unstable,
@@ -10,6 +11,32 @@
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.framework-13-7040-amd
     ./disk_encryption.nix
+  ];
+
+  nixpkgs.overlays = [
+    (self: super: {
+      ollama = super.ollama.overrideAttrs (finalAttrs: previousAttrs: {
+         version = "9.7.9arm";
+         vendorHash = "sha256-oHTo8EQGfrKOwg6SRPrL23qSH+p+clBxxiXsuO1auLk=";
+         src = super.fetchFromGitHub {
+           owner = "crandel";
+           repo = "ollama-amd-igpu";
+           rev = "95e1e05cb56275a8f694116f836174e9c0463042";
+           hash = "sha256-zu2jnH4R5TGxN//LCHzdtWfmQmG0zuVU4FVv6uppF1Q=";
+           fetchSubmodules = true;
+         };
+		ldflags = [
+		  "-s"
+		  "-w"
+		  "-X=github.com/ollama/ollama/version.Version=${finalAttrs.version}"
+		  "-X=github.com/ollama/ollama/server.mode=release"
+		];
+		postPatch = ''
+		  substituteInPlace version/version.go \
+			--replace-fail 0.0.0 '${finalAttrs.version}'
+		'';
+      });
+   })
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -72,16 +99,10 @@
 
   services.ollama = {
 	enable = true;
-	# Optional: preload models, see https://ollama.com/library
-    loadModels = [
-      "llama3.2:3b"
-      "deepseek-r1:1.5b"
-      "deepseek-r1:8b"
-      "gemma3:4b"
-      "gemma3n:24b"
-    ];
 	acceleration = "rocm";
+    rocmOverrideGfx = "11.0.2";
   };
+  services.open-webui.enable = true;
 
 
   system.stateVersion = "24.11"; # Did you read the comment?
