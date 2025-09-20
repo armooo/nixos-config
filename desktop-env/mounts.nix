@@ -4,6 +4,7 @@ let
     "movies"
     "music"
     "tv"
+    "armooo"
   ];
 in
 {
@@ -17,7 +18,7 @@ in
     what = "//file-server.ts.armooo.net/${share}";
     where = "/mnt/${share}";
     type = "cifs";
-    options = "guest";
+    options = "credentials=/etc/cifs-credentials,uid=1000";
     mountConfig = {
       TimeoutSec = 15;
     };
