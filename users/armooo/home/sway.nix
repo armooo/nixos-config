@@ -83,7 +83,7 @@
         "${modifier}+n" = "exec ${pkgs.swaynotificationcenter}/bin/swaync-client -t -sw";
         "${modifier}+p" = "[app_id=\"signal\"] scratchpad show";
         "${modifier}+Shift+s" = "sticky toggle";
-        "${modifier}+d" = "exec echo -n toggle |  ${pkgs.netcat}/bin/nc -U /home/armooo/.cache/albert/ipc_socket";
+        "${modifier}+d" = "exec ${pkgs.albert}/bin/albert toggle";
         XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
         XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
