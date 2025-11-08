@@ -28,6 +28,7 @@
     htop
     iotop
     iw
+    kepubify
     lutris
     mplayer
     mpv
