@@ -96,6 +96,7 @@
       "steam-original"
       "steam-unwrapped"
       "steam-run"
+      "dropbox"
     ];
 
     programs.steam = {

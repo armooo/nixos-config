@@ -1,6 +1,7 @@
 { pkgs, armooo-dotfiles, ... }:
 {
   imports = [
+    ./dropbox.nix
     ./fish.nix
     ./git.nix
     ./ssh.nix
