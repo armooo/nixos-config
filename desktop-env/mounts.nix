@@ -5,6 +5,7 @@ let
     "music"
     "tv"
     "armooo"
+    "ebooks"
   ];
 in
 {
