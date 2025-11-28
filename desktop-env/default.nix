@@ -5,6 +5,7 @@
     ./mounts.nix
     ./suspend.nix
     ./plymouth.nix
+    ./keyring.nix
   ];
 
   # Enable the X11 windowing system.
@@ -27,7 +28,7 @@
     ];
   };
 
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = true;
   programs.sway.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   security.pam.services.hyprlock = {
@@ -51,9 +52,9 @@
     ];
   };
 
-  services.logind = {
-    killUserProcesses = true;
-    powerKey = "lock";
+  services.logind.settings.Login = {
+    KillUserProcesses = true;
+    HandlePowerKey = "lock";
   };
 
   # Configure keymap in X11

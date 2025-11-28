@@ -11,8 +11,6 @@
     recursive = true;
   };
 
-  services.gnome-keyring.enable = true;
-
   home.pointerCursor = {
     name = "Adwaita";
     package = pkgs.adwaita-icon-theme;

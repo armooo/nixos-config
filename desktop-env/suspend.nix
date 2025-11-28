@@ -1,6 +1,6 @@
 { ... }:
 {
-  services.logind.lidSwitch = "suspend-then-hibernate";
+  services.logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=120min
     # HibernateOnACPower=off
