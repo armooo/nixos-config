@@ -79,6 +79,7 @@
           ./users/armooo
           ./systemd-resolved.nix
           ./secure_boot.nix
+          ./ai.nix
           home-manager.nixosModules.home-manager
         ];
       };

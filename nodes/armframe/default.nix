@@ -14,6 +14,11 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.extraModprobeConfig = ''
+    options ttm pages_limit=7340032
+    options ttm page_pool_size=7340032
+  '';
+
   services.fwupd.enable = true;
   services.upower.enable = true;
   services.hardware.bolt.enable = true;
