@@ -21,6 +21,9 @@
   programs.command-not-found.enable = false;
 
   services.tailscale.enable = true;
+  networking.localCommands = ''
+     ip rule add to 192.168.10.0/24 priority 2500 lookup main
+  '';
 
   nix.gc = {
     automatic = true;
