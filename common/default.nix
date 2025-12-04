@@ -25,6 +25,16 @@
      ip rule add to 192.168.10.0/24 priority 2500 lookup main
   '';
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "armooo" ];
+    };
+  };
+
   nix.gc = {
     automatic = true;
     dates = "weekly";

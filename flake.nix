@@ -20,6 +20,12 @@
       url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.home-manager.follows = "home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
   };
 
   outputs =
@@ -31,6 +37,7 @@
       armooo-dotfiles,
       virtualfish,
       lanzaboote,
+      agenix,
       ...
     }@inputs:
     {
@@ -64,7 +71,7 @@
           home-manager.nixosModules.home-manager
         ];
       };
-      nixosConfigurations.armframe = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.armframe = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         specialArgs = {
           armooo-dotfiles = armooo-dotfiles;
@@ -81,6 +88,10 @@
           ./secure_boot.nix
           ./ai.nix
           home-manager.nixosModules.home-manager
+          agenix.nixosModules.default
+          {
+            environment.systemPackages = [ agenix.packages.${system}.default ];
+          }
         ];
       };
     };
