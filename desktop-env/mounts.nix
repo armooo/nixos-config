@@ -6,6 +6,7 @@ let
     "tv"
     "armooo"
     "ebooks"
+    "bt-done"
   ];
 in
 {
