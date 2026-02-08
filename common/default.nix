@@ -57,4 +57,6 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
+
+  services.dbus.implementation = "broker";
 }

@@ -82,6 +82,7 @@
         "${modifier}+p" = "[app_id=\"signal\"] scratchpad show";
         "${modifier}+Shift+s" = "sticky toggle";
         "${modifier}+d" = "exec ${pkgs.albert}/bin/albert toggle";
+        "${modifier}+c" = "exec screenshot";
         XF86AudioMute = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
         XF86AudioRaiseVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         XF86AudioLowerVolume = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
@@ -108,6 +109,27 @@
     pavucontrol
     sway-audio-idle-inhibit
     swaynotificationcenter
+    (
+      writeShellApplication {
+        name = "screenshot";
+        runtimeInputs = [
+          grim
+          sway
+          jq
+          slurp
+        ];
+        text = ''
+          ${pkgs.grim}/bin/grim \
+            -g \
+            "$(
+              ${pkgs.sway}/bin/swaymsg -t get_tree \
+              | ${pkgs.jq}/bin/jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
+              | ${pkgs.slurp}/bin/slurp -d \
+            )" \
+            - | ${pkgs.wl-clipboard}/bin/wl-copy
+        '';
+      }
+    )
   ];
 
   systemd.user.services.sway-audio-idle-inhibit = {
