@@ -7,6 +7,7 @@ let
     "armooo"
     "ebooks"
     "bt-done"
+    "downloads"
   ];
 in
 {
