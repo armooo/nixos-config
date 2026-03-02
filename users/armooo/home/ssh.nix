@@ -1,6 +1,6 @@
 { lib, armooo-dotfiles, ... }:
 {
-  home.file.".ssh/config".source = "${armooo-dotfiles}/ssh/.ssh/config";
+  home.file.".ssh/config".source = ./ssh_config;
 
   home.activation = {
     mkCmSocket = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
