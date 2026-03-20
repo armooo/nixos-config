@@ -26,7 +26,7 @@
     package = null;
     systemd.enable = true;
     config = {
-      defaultWorkspace = "1";
+      defaultWorkspace = "workspace number 1";
       modifier = "Mod4";
       input = {
         "type:touchpad" ={
