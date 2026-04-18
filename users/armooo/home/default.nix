@@ -22,6 +22,7 @@
 
   home.packages = with pkgs; [
     binutils
+    bluetui
     file
     gdb
     htop
