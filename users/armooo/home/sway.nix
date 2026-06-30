@@ -150,17 +150,11 @@
 
   services.swayidle = {
     enable = true;
-    systemdTarget = "sway-session.target";
-    events = [
-      {
-        event = "before-sleep";
-        command = "${pkgs.hyprlock}/bin/hyprlock &";
-      }
-      {
-        event = "lock";
-        command = "${pkgs.hyprlock}/bin/hyprlock &";
-      }
-    ];
+    systemdTargets = ["sway-session.target"];
+    events = {
+      before-sleep = "${pkgs.hyprlock}/bin/hyprlock &";
+      lock = "${pkgs.hyprlock}/bin/hyprlock &";
+    };
     timeouts = [
       {
         timeout = 300;

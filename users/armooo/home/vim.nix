@@ -5,11 +5,9 @@
     enable = true;
     defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
-      flake8-vim
       vim-fugitive
       vim-go
       vim-fish
-      vim-jinja
       rust-vim
       vim-autoformat
       vim-flake8
@@ -31,7 +29,7 @@
   };
 
   home.packages = with pkgs; [
-    nixfmt-rfc-style
+    nixfmt
     black
     clang-tools
     fixjson

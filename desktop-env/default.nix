@@ -28,13 +28,20 @@
     ];
   };
 
-  services.displayManager.gdm.enable = true;
-  programs.sway.enable = true;
+  services.displayManager = {
+    defaultSession = "sway";
+    gdm = {
+      enable = true;
+    };
+  };
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   security.pam.services.hyprlock = {
     fprintAuth = false;
   };
-  programs.light.enable = true;
   services.avahi.enable = true;
   services.actkbd = {
     enable = true;
@@ -42,12 +49,12 @@
       {
         keys = [ 225 ];
         events = [ "key" ];
-        command = "/run/current-system/sw/bin/light -A 5";
+        command = "/run/current-system/sw/bin/xbacklight -inc 5";
       }
       {
         keys = [ 224 ];
         events = [ "key" ];
-        command = "/run/current-system/sw/bin/light -U 5";
+        command = "/run/current-system/sw/bin/xbacklight -dec 5";
       }
     ];
   };
@@ -67,6 +74,7 @@
   services.printing.enable = true;
 
   hardware.bluetooth.enable = true;
+  hardware.acpilight.enable = true;
   services.udisks2.enable = true;
 
   # Enable sound with pipewire.
@@ -89,6 +97,7 @@
   # services.xserver.libinput.enable = true;
   services.dbus.packages = [ pkgs.gcr ];
 
+  nixpkgs.config.permittedInsecurePackages = ["pnpm-10.29.2"];
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [

@@ -15,7 +15,10 @@
   home.file.".inputrc".source = "${armooo-dotfiles}/readline/.inputrc";
 
   programs.home-manager.enable = true;
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    configPath = ".mozilla/firefox";
+  };
   services.playerctld.enable = true;
 
   fonts.fontconfig.enable = true;
