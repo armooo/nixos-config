@@ -28,11 +28,11 @@
     "armooo-dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1740784225,
-        "narHash": "sha256-PjMEJ/qspPy1Yu+uNxWbzxg/imAYaNiNQKAeNjKsZDk=",
+        "lastModified": 1782849315,
+        "narHash": "sha256-m0cJKGRRuXNQsYL1dBO5QFhJj7Y2VzFjQYThrqtBUu8=",
         "owner": "armooo",
         "repo": "dotfiles",
-        "rev": "cbf88511a09261953928d65550a3fbd11ac2a69b",
+        "rev": "963205a07222d92138767ee23e3d2240e96a9ea7",
         "type": "github"
       },
       "original": {
@@ -195,11 +195,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1782535326,
-        "narHash": "sha256-ZeRxu4yn6shd3SNF5ZUQb4r7BaVo1zBKMjRhfoNSBmw=",
+        "lastModified": 1783148766,
+        "narHash": "sha256-uslt2pqShTIXDdAHRHv2QkYLsVdY8Oqwz0EA48/RSM8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "714a5f8c4ead6b31148d829288440ed033ccc041",
+        "rev": "a50de1b7d8a586adc18d2395c19de7d6058e6030",
         "type": "github"
       },
       "original": {
