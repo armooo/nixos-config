@@ -22,7 +22,7 @@
 
   services.tailscale.enable = true;
   networking.localCommands = ''
-     ip rule add to 192.168.10.0/24 priority 2500 lookup main
+     ip rule add to 192.168.10.0/24 priority 2500 lookup main || true
   '';
 
   services.openssh = {
